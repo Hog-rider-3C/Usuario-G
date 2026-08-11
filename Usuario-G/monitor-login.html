@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login — Monitoramento Restrito</title>
+
+  <link rel="shortcut icon" href="sergio.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+  <div class="login-bg"></div>
+
+  <main class="login-shell">
+
+    <div class="login-left">
+      <img class="login-logo-big" src="sergio.png" alt="Logo">
+      <h1>Monitoramento Restrito</h1>
+      <h2>Segurança Inteligente</h2>
+
+      <p>
+        Área reservada para acompanhamento e alertas de sensores/dispositivos.
+        Acesse para visualizar o status e interagir com a IA.
+      </p>
+    </div>
+
+    <section class="login-card">
+
+      <header class="login-head">
+        <h2>Login</h2>
+      </header>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <div class="input-wrap">
+            <input id="email" type="email" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pwd">Senha</label>
+          <div class="input-wrap">
+            <input id="pwd" type="password" autocomplete="current-password" required>
+          </div>
+        </div>
+
+        <button class="login-btn" type="submit">Entrar</button>
+
+        <div class="login-msg" id="msg">Usuário ou senha inválidos</div>
+
+        <p class="login-help">Se tiver problemas, contate o administrador.</p>
+
+      </form>
+
+      <footer class="login-foot">
+        <a class="login-link" href="register.html">Criar / Atualizar usuário</a>
+      </footer>
+
+    </section>
+
+  </main>
+
+  <script src="monitor-login.js"></script>
+
+</body>
+
+</html>
+

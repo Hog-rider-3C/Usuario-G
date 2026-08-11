@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Monitoramento Restrito</title>
+
+  <link rel="icon" type="image/png" href="sergio.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section id="home">
+    <div class="loading-screen">
+      <img src="sergio.png" class="loading-logo">
+      <h1>Monitoramento</h1>
+      <p>Inicializando sistema...</p>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="overlay" class="overlay"></div>
+
+  <header class="topbar">
+    <button id="menuBtn" class="menu-btn">☰</button>
+    <h1 class="logo">MONITORAMENTO RESTRITO</h1>
+  </header>
+
+  <aside id="sidebar" class="sidebar">
+    <h2>MENU</h2>
+
+    <button class="botao ativo" data-target="inicio">Visão Geral</button>
+
+    <button class="botao" data-target="pir">SENSOR PIR</button>
+    <button class="botao" data-target="mq2">MQ-2</button>
+    
+
+    <button class="botao" data-target="monitor-ia">Alexcio IA</button>
+
+    <button id="themeToggle" class="theme-toggle">
+      <div class="toggle-circle"></div>
+    </button>
+
+    <button id="logoutBtn" class="logoutBtn">Sair</button>
+  </aside>
+
+  <div class="painel">
+    <main class="conteudo">
+
+      <!-- INÍCIO -->
+      <section class="secao ativa" id="inicio">
+        <div class="home-box">
+          <h2>Resumo do Monitoramento</h2>
+          <p>
+            Acompanhe os dispositivos em tempo quase real. Cards e alertas estão prontos para integrar dados do
+            seu backend/Arduino.
+          </p>
+
+          <div class="cards-home">
+            <div class="card-home">
+              <h3>Alertas Ativos</h3>
+              <p id="alertasAtivos">Carregando...</p>
+            </div>
+            <div class="card-home">
+              <h3>Status Geral</h3>
+              <p id="statusGeral">Carregando...</p>
+            </div>
+            <div class="card-home">
+              <h3>Última Atualização</h3>
+              <p id="ultimaAtualizacao">—</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!-- PIR -->
+      <section class="secao" id="pir">
+        <h2>PIR - Sensores de Movimento</h2>
+
+        <div class="serial-controls">
+          <button id="conectarUSBPir" class="device-btn serial-btn">🔌 Conectar Sensor USB</button>
+          <button id="desconectarUSBPir" class="device-btn serial-btn" style="display:none;">⏹ Desconectar</button>
+          <span id="serialStatusPir" class="serial-status">Desconectado</span>
+        </div>
+
+        <div class="live-panel">
+          <div class="live-readout">
+            <span class="live-label">MOVIMENTO</span>
+            <span class="live-value" id="pirValor">—</span>
+            <span class="live-unit" id="pirUnidade"></span>
+          </div>
+
+          <div class="live-badge-warp" id="pirBadgePanel">
+            <span class="live-badge" id="pirStatusBadge">Sem conexão</span>
+          </div>
+
+          <div class="live-bar">
+            <div class="live-bar-fill" id="pirBarra"></div>
+          </div>
+
+          <div class="live-meta">
+            <span>Última atualização:</span>
+            <b id="pirHora">—</b>
+          </div>
+        </div>
+
+        <div class="live-history">
+          <h3>Histórico de leituras</h3>
+          <div id="pirHistorico" class="history-list">
+            <p class="history-empty">Conecte o sensor para ver o histórico.</p>
+          </div>
+        </div>
+      </section>
+
+<!-- MQ2 -->
+      <section class="secao" id="mq2">
+        <h2>MQ-2 - Detector de Fumaça/Gás</h2>
+
+        <div class="serial-controls">
+          <button id="conectarUSB" class="device-btn serial-btn">🔌 Conectar Sensor USB</button>
+          <button id="desconectarUSB" class="device-btn serial-btn" style="display:none;">⏹ Desconectar</button>
+          <span id="serialStatus" class="serial-status">Desconectado</span>
+        </div>
+
+        <div class="live-panel">
+          <div class="live-readout">
+            <span class="live-label">GÁS / FUMAÇA</span>
+            <span class="live-value" id="mq2Valor">—</span>
+            <span class="live-unit" id="mq2Unidade"></span>
+          </div>
+
+          <div class="live-badge-warp" id="mq2BadgePanel">
+            <span class="live-badge" id="mq2StatusBadge">Sem conexão</span>
+          </div>
+
+          <div class="live-bar">
+            <div class="live-bar-fill" id="mq2Barra"></div>
+          </div>
+
+          <div class="live-meta">
+            <span>Última atualização:</span>
+            <b id="mq2Hora">—</b>
+          </div>
+        </div>
+
+        <div class="live-history">
+          <h3>Histórico de leituras</h3>
+          <div id="mq2Historico" class="history-list">
+            <p class="history-empty">Conecte o sensor para ver o histórico.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- IA -->
+      <section class="secao" id="monitor-ia">
+        <h2>Alexcio IA</h2>
+
+        <div id="ia-area" class="descricao ia-area">
+          <img src="fundo-do-chat.png" class="imagem-chat">
+          <p>
+            <b>IA (Monitor):</b>
+            Analise alertas e ajude com orientações curtas e práticas.
+          </p>
+        </div>
+
+        <div class="chat-input">
+          <input id="pergunta" type="text" placeholder="Digite o que você quer analisar..." onkeydown="if(event.key === 'Enter'){enviarPerguntaIA();}">
+          <button onclick="enviarPerguntaIA()">➤</button>
+        </div>
+
+        <div class="monitor-hint">
+          Dica: peça "resuma os alertas" ou "o que fazer se o MQ-2 indicar risco".
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="monitor.js"></script>
+  <script src="chat-ia.js"></script>
+  <script src="monitor-devices.js"></script>
+
+
+  <img src="imagem-ds-site-inferior.png" class="imagem-fixa">
+
+</body>
+
+</html>
+
